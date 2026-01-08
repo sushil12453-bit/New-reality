@@ -1,0 +1,323 @@
+/* ==========================
+   GLOBAL RESET & BASE STYLES
+=========================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: "My", sans-serif;
+    background-color: #fff;
+    color: #000;
+}
+
+/* -----------------------------
+     FONT PATHS
+------------------------------*/
+@font-face {
+    font-family: "My";
+    src: url("../assets/Fonts/neuemontreal-regular-webfont.woff2") format("woff2"),
+         url("../assets/Fonts/neuemontreal-regular-webfont.woff") format("woff");
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "MyBold";
+    src: url("../assets/Fonts/neuemontreal-bold-webfont.woff2") format("woff2"),
+         url("../assets/Fonts/neuemontreal-bold-webfont.woff") format("woff");
+    font-weight: bold;
+}
+
+/* -----------------------------
+     LINKS & IMAGES
+------------------------------*/
+a {
+    cursor: pointer;
+    text-decoration: none;
+    color: #000;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+h1 {
+    font-family: "MyBold", sans-serif;
+    font-size: 20vw;
+    letter-spacing: .15rem;
+}
+
+p {
+    font-size: 2.5vh;
+}
+
+/* DARK THEME */
+.dark {
+    color: #fff !important;
+    background-color: #000 !important;
+}
+
+/* MAIN */
+main {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ==========================
+    HERO SECTION
+=========================== */
+.hero {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    transition: all .3s ease;
+}
+
+/* ==========================
+    NAVBAR
+=========================== */
+.hero nav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.6rem .8rem;
+}
+
+.menu-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.menu {
+    border: 2px solid #000;
+    border-radius: 16px;
+    padding: 0.25rem 0.8rem;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.icon-wrapper {
+    width: 1.2rem;
+    aspect-ratio: 1;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: .8rem;
+    border-radius: 50%;
+    color: #fff;
+    background: #000;
+    cursor: pointer;
+}
+
+/* ==========================
+    MENU OVERLAY
+=========================== */
+.menu-overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #fefefe;
+    color: #000;
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+    transition: transform .3s ease;
+    z-index: 10;
+}
+
+.close {
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    padding: .5rem;
+}
+
+.close a {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.nav-links {
+    position: relative;
+    top: 15%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.link-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding-left: 3vw;
+}
+
+.link-wrapper h2 {
+    font-size: 6vw;
+    width: fit-content;
+    transition: .3s ease;
+}
+
+.link-wrapper img {
+    position: absolute;
+    width: 12vw;
+    height: 26vh;
+    top: 0;
+    left: 5%;
+    transform-origin: top;
+    transform: scaleY(0);
+    transition: transform .4s ease;
+    z-index: 1;
+}
+
+.link-wrapper p {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(0, -50%);
+    font-size: 4vw;
+    white-space: nowrap;
+    color: #ccc;
+    opacity: 0;
+    transition: .4s ease;
+    z-index: 2;
+}
+
+/* Hover effects */
+.link-wrapper h2:hover {
+    opacity: 1;
+}
+
+.link-wrapper h2:hover ~ img {
+    transform: scaleY(1);
+}
+
+.link-wrapper h2:hover ~ p {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+}
+
+/* ==========================
+    SOCIAL MEDIA
+=========================== */
+.social-media {
+    position: absolute;
+    bottom: 5vh;
+    left: 3vw;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-size: 2vw;
+    opacity: 0; /* handled via GSAP */
+    z-index: 20;
+}
+
+/* ==========================
+    IMAGE TRAIL
+=========================== */
+.hero-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.image-trail-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.trail-image {
+    position: absolute;
+    object-fit: cover;
+    will-change: transform, opacity;
+}
+
+/* ==========================
+    FOOTER
+=========================== */
+footer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1rem;
+}
+
+.footer-img {
+    display: flex;
+    gap: 1rem;
+}
+
+.img-wrapper {
+    width: 21vh;
+    height: 25vh;
+    overflow: hidden;
+    position: relative;
+}
+
+.img-mask {
+    position: absolute;
+    width: 110%;
+    height: 110%;
+    background: #fff;
+    top: 0;
+    left: 0;
+}
+
+/* ==========================
+    OVERLAY LOADER
+=========================== */
+.overlay {
+    position: absolute;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+}
+
+.fg {
+    background: #000;
+    width: 100%;
+    height: 100%;
+    z-index: 6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+}
+
+.bg {
+    background: #FE0002;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+}
